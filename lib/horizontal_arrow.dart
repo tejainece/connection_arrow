@@ -1,44 +1,55 @@
 import 'package:flutter/material.dart';
 
 class HorizontalArrow extends CustomPainter {
-  const HorizontalArrow();
+  final ArrowConfig config;
+
+  const HorizontalArrow({required this.config});
 
   @override
   void paint(Canvas canvas, Size size) {
+    final startPoint = config.startPoint(size);
+    final startAnchor = config.startAnchor(size);
+    final endPoint = config.endPoint(size);
+    final endAnchor = config.endAnchor(size);
     Path bezierPath = Path()
-      ..moveTo(0, size.height)
-      ..lineTo(0, size.height * 0.8)
-      ..quadraticBezierTo(
-        size.width / 2,
-        size.height * 0.6,
-        size.width,
-        size.height * 0.8,
-      )
-      ..lineTo(size.width, size.height);
+      ..moveTo(startPoint.dx, startPoint.dy)
+      ..cubicTo(
+        startAnchor.dx,
+        startAnchor.dy,
+        endAnchor.dx,
+        endAnchor.dy,
+        endPoint.dx,
+        endPoint.dy,
+      );
 
     final bezierPaint = Paint()
-      ..shader =
-          LinearGradient(colors: [Colors.purple[400]!, Colors.teal[400]!])
-              .createShader(Offset(0, size.height * 0.8) & size);
+      ..color = Colors.black
+      ..strokeWidth = 2
+      ..style = PaintingStyle.stroke
+      ..strokeJoin = StrokeJoin.round;
 
     canvas.drawPath(bezierPath, bezierPaint);
   }
 
   @override
-  bool shouldRepaint(HorizontalArrow oldDelegate) => false;
+  bool shouldRepaint(HorizontalArrow oldDelegate) =>
+      oldDelegate.config.isEqual(config);
 }
 
 class ArrowConfig {
-  final Size size;
   final double bend;
   final bool topToBottom;
 
-  ArrowConfig({required this.size, this.bend = 0.5, this.topToBottom = false});
+  ArrowConfig({this.bend = 0.5, this.topToBottom = false});
 
-  Offset get point1 => Offset(0, topToBottom ? 0 : size.height);
-  Offset get anchor1 =>
+  Offset startPoint(Size size) => Offset(0, topToBottom ? 0 : size.height);
+  Offset startAnchor(Size size) =>
       Offset(size.width * bend, topToBottom ? 0 : size.height);
-  Offset get point2 => Offset(size.width, start.dy > end.dy ? rect.height : 0);
-  Offset get anchor2 =>
-      Offset(rect.width * (1 - bend), start.dy > end.dy ? rect.height : 0);
+  Offset endPoint(Size size) =>
+      Offset(size.width, topToBottom ? size.height : 0);
+  Offset endAnchor(Size size) =>
+      Offset(size.width * (1 - bend), topToBottom ? size.height : 0);
+
+  bool isEqual(ArrowConfig other) =>
+      bend == other.bend && topToBottom == other.topToBottom;
 }
