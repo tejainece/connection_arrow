@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:arrow_path/arrow_path.dart';
 
+export 'arrow_painter.dart';
+
+/*
 class HorizontalArrow extends CustomPainter {
   final ArrowConfig config;
 
@@ -21,6 +25,7 @@ class HorizontalArrow extends CustomPainter {
         endPoint.dx,
         endPoint.dy,
       );
+    bezierPath = ArrowPath.make(path: bezierPath);
 
     final bezierPaint = Paint()
       ..color = Colors.black
@@ -38,13 +43,23 @@ class HorizontalArrow extends CustomPainter {
 
 class ArrowConfig {
   final double bend;
-  final bool topToBottom;
+  final CurveDirection direction;
 
-  ArrowConfig({this.bend = 0.5, this.topToBottom = false});
+  ArrowConfig({this.bend = 0.5, this.direction = CurveDirection.topToBottom});
 
-  Offset startPoint(Size size) => Offset(0, topToBottom ? 0 : size.height);
-  Offset startAnchor(Size size) =>
-      Offset(size.width * bend, topToBottom ? 0 : size.height);
+  Offset startPoint(Size size) {
+    switch(direction) {
+      case CurveDirection.topToBottom:
+        return Offset(0, 0);
+      case CurveDirection.bottomToTop:
+        return Offset(0, size.height);
+      case CurveDirection.straight:
+        return Offset(0, size.height / 2);
+    }
+  }
+  Offset startAnchor(Size size) {
+    Offset(size.width * bend, topToBottom ? 0 : size.height)
+  }
   Offset endPoint(Size size) =>
       Offset(size.width, topToBottom ? size.height : 0);
   Offset endAnchor(Size size) =>
@@ -53,3 +68,10 @@ class ArrowConfig {
   bool isEqual(ArrowConfig other) =>
       bend == other.bend && topToBottom == other.topToBottom;
 }
+
+enum CurveDirection {
+  topToBottom,
+  straight,
+  bottomToTop,
+}
+ */

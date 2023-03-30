@@ -19,17 +19,16 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                width: 150,
-                height: 100,
-                child: CustomPaint(
-                  painter: HorizontalArrow(config: ArrowConfig()),
-                ),
-              )
-            ],
+          child: Container(
+            width: 200,
+            height: 100,
+            color: Colors.grey,
+            child: CustomPaint(
+                painter: ConnectionsPainter(connections: [
+              Connection(start: Offset(0, 0), end: Offset(200, 100)),
+              Connection(start: Offset(0, 100), end: Offset(200, 100)),
+              Connection(start: Offset(100, 100), end: Offset(100, 100)),
+            ])),
           ),
         ),
       ),
