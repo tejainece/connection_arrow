@@ -19,11 +19,11 @@ class Connection {
         ..lineTo(end.dx, end.dy);
     } else {
       path
-        ..moveTo(start.dx, end.dy)
+        ..moveTo(start.dx, start.dy)
         ..cubicTo(
           width * bend,
           start.dy,
-          width * (1 - bend),
+          width * bend,
           end.dy,
           end.dx,
           end.dy,
