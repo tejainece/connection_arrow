@@ -11,8 +11,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    const bend1 = 0.3;
-    const bend2 = 0.7;
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -34,64 +32,36 @@ class MyApp extends StatelessWidget {
               ])),
             ),
             Row(children: [
-              Container(
-                width: 200,
-                height: 400,
-                color: Colors.black12,
-                child: CustomPaint(
-                    painter: ConnectionsPainter(connections: [
-                  Connection(
-                      start: Offset(0, 200), end: Offset(200, 0)),
-                  Connection(
-                      start: Offset(0, 200), end: Offset(200, 100)),
-                  Connection(
-                      start: Offset(0, 200), end: Offset(200, 200)),
-                  Connection(
-                      start: Offset(0, 200), end: Offset(200, 300)),
-                  Connection(
-                      start: Offset(0, 200), end: Offset(200, 400)),
-                ])),
-              ),
-              Container(
-                width: 200,
-                height: 400,
-                color: Colors.black12,
-                child: CustomPaint(
-                    painter: ConnectionsPainter(connections: [
-                      Connection(
-                          start: Offset(0, 200), end: Offset(200, 0), bend: bend1),
-                      Connection(
-                          start: Offset(0, 200), end: Offset(200, 100), bend: bend1),
-                      Connection(
-                          start: Offset(0, 200), end: Offset(200, 200), bend: bend1),
-                      Connection(
-                          start: Offset(0, 200), end: Offset(200, 300), bend: bend1),
-                      Connection(
-                          start: Offset(0, 200), end: Offset(200, 400), bend: bend1),
-                    ])),
-              ),
-              Container(
-                width: 200,
-                height: 400,
-                color: Colors.black12,
-                child: CustomPaint(
-                    painter: ConnectionsPainter(connections: [
-                      Connection(
-                          start: Offset(0, 200), end: Offset(200, 0), bend: bend2),
-                      Connection(
-                          start: Offset(0, 200), end: Offset(200, 100), bend: bend2),
-                      Connection(
-                          start: Offset(0, 200), end: Offset(200, 200), bend: bend2),
-                      Connection(
-                          start: Offset(0, 200), end: Offset(200, 300), bend: bend2),
-                      Connection(
-                          start: Offset(0, 200), end: Offset(200, 400), bend: bend2),
-                    ])),
-              ),
+              make(0.1),
+              make(0.3),
+              make(0.5),
+              make(0.7),
+              make(0.9),
+              make(1),
+              make(1.2),
             ]),
           ],
         ),
       ),
     );
   }
+}
+
+Widget make(double bend) {
+  return Container(
+    width: 200,
+    height: 400,
+    color: Colors.black12,
+    child: CustomPaint(
+      painter: ConnectionsPainter(
+        connections: [
+          Connection(start: Offset(0, 200), end: Offset(200, 0), bend: bend),
+          Connection(start: Offset(0, 200), end: Offset(200, 100), bend: bend),
+          Connection(start: Offset(0, 200), end: Offset(200, 200), bend: bend),
+          Connection(start: Offset(0, 200), end: Offset(200, 300), bend: bend),
+          Connection(start: Offset(0, 200), end: Offset(200, 400), bend: bend),
+        ],
+      ),
+    ),
+  );
 }
