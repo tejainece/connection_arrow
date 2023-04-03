@@ -1,4 +1,4 @@
-# horizontal_arrow
+# connection_arrow
 
 A new Flutter project.
 

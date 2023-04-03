@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:horizontal_arrow/horizontal_arrow.dart';
+import 'package:connection_arrow/connection_arrow.dart';
 
 void main() {
   runApp(const MyApp());

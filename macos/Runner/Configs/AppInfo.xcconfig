@@ -5,10 +5,10 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = horizontal_arrow
+PRODUCT_NAME = connection_arrow
 
 // The application's bundle identifier
 PRODUCT_BUNDLE_IDENTIFIER = flutter.horizontalarrow.horizontalArrow
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2023 flutter.horizontal_arrow. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2023 flutter.connection_arrow. All rights reserved.

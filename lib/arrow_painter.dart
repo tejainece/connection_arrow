@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:arrow_path/arrow_path.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +14,8 @@ class Connection {
       {required this.start,
       required this.end,
       this.bend = 0.5,
-      this.tipAngle,
-      this.tipLength});
+      this.tipAngle = 30,
+      this.tipLength = 15});
 
   Path path() {
     final width = (end.dx - start.dx).abs();
@@ -26,12 +25,16 @@ class Connection {
         ..moveTo(start.dx, start.dy)
         ..lineTo(end.dx, end.dy);
     } else {
+      double endAnchorX = width * (1 - bend);
+      if (width - endAnchorX < 75) {
+        endAnchorX = 75;
+      }
       path
         ..moveTo(start.dx, start.dy)
         ..cubicTo(
           width * bend,
           start.dy,
-          width * (1 - bend),
+          endAnchorX,
           end.dy,
           end.dx,
           end.dy,
@@ -78,6 +81,7 @@ class ConnectionsPainter extends CustomPainter {
 }
 
 Path arrowTip(Offset point, double angle, double length) {
+  angle = _toRadian(180 - angle);
   final start = Offset(length * cos(angle), length * sin(angle));
   final end = Offset(length * cos(-angle), length * sin(-angle));
   return Path()
@@ -86,3 +90,5 @@ Path arrowTip(Offset point, double angle, double length) {
     ..moveTo(point.dx, point.dy)
     ..relativeLineTo(end.dx, end.dy);
 }
+
+double _toRadian(double degree) => degree * pi / 180;

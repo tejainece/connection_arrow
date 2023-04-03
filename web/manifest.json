@@ -1,6 +1,6 @@
 {
-    "name": "horizontal_arrow",
-    "short_name": "horizontal_arrow",
+    "name": "connection_arrow",
+    "short_name": "connection_arrow",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

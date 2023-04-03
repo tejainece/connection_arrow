@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="flutter.horizontal_arrow.horizontal_arrow">
+    package="flutter.connection_arrow.connection_arrow">
     <application
-        android:label="horizontal_arrow"
+        android:label="connection_arrow"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
