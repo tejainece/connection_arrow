@@ -62,31 +62,31 @@ Widget make(double bend, {TipMaker? tip}) {
   return Container(
     width: 200,
     height: 400,
-    margin: EdgeInsets.only(right: 20),
+    margin: const EdgeInsets.only(right: 20),
     color: Colors.black12,
     child: CustomPaint(
       painter: ConnectionsPainter(
         connections: [
           Connection(
-              start: Offset(0, 200), end: Offset(200, 0), bend: bend, tip: tip),
+              start: const Offset(0, 200), end: const Offset(200, 0), bend: bend, tip: tip),
           Connection(
-              start: Offset(0, 200),
-              end: Offset(200, 100),
+              start: const Offset(0, 200),
+              end: const Offset(200, 100),
               bend: bend,
               tip: tip),
           Connection(
-              start: Offset(0, 200),
-              end: Offset(200, 200),
+              start: const Offset(0, 200),
+              end: const Offset(200, 200),
               bend: bend,
               tip: tip),
           Connection(
-              start: Offset(0, 200),
-              end: Offset(200, 300),
+              start: const Offset(0, 200),
+              end: const Offset(200, 300),
               bend: bend,
               tip: tip),
           Connection(
-              start: Offset(0, 200),
-              end: Offset(200, 400),
+              start: const Offset(0, 200),
+              end: const Offset(200, 400),
               bend: bend,
               tip: tip),
         ],
