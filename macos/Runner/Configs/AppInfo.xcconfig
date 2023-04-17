@@ -8,7 +8,7 @@
 PRODUCT_NAME = connection_arrow
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = flutter.horizontalarrow.horizontalArrow
+PRODUCT_BUNDLE_IDENTIFIER = flutter.curvyconnection.curvyconnection
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2023 flutter.connection_arrow. All rights reserved.

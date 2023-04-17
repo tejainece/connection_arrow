@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:connection_arrow/connection_arrow.dart';
+import 'package:curvy_connection/curvy_connection.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,44 +12,46 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Curvy connection',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       home: Scaffold(
-        body: Column(
-          children: [
-            Container(
-              width: 200,
-              height: 100,
-              color: Colors.grey,
-              child: const CustomPaint(
-                  painter: ConnectionsPainter(connections: [
-                Connection(start: Offset(0, 0), end: Offset(200, 100)),
-                Connection(start: Offset(0, 50), end: Offset(200, 50)),
-                Connection(start: Offset(0, 100), end: Offset(200, 0)),
-              ])),
-            ),
-            Row(children: [
-              make(0.1, tip: ArrowTip()),
-              make(0.3, tip: ArrowTip()),
-              make(0.5, tip: ArrowTip()),
-              make(0.7, tip: ArrowTip()),
-              make(0.9, tip: ArrowTip()),
-              make(1, tip: ArrowTip()),
-              make(1.2, tip: ArrowTip()),
-            ]),
-            Row(children: [
-              make(0.1, tip: CircleTip()),
-              make(0.3, tip: CircleTip()),
-              make(0.5, tip: CircleTip()),
-              make(0.7, tip: CircleTip()),
-              make(0.9, tip: CircleTip()),
-              make(1, tip: CircleTip()),
-              make(1.2, tip: CircleTip()),
-            ]),
-          ],
+        body: InteractiveViewer(
+          child: Column(
+            children: [
+              Container(
+                width: 200,
+                height: 100,
+                color: Colors.grey,
+                child: const CustomPaint(
+                    painter: ConnectionsPainter(connections: [
+                  Connection(start: Offset(0, 0), end: Offset(200, 100)),
+                  Connection(start: Offset(0, 50), end: Offset(200, 50)),
+                  Connection(start: Offset(0, 100), end: Offset(200, 0)),
+                ])),
+              ),
+              Row(children: [
+                make(0.1, tip: ArrowTip()),
+                make(0.3, tip: ArrowTip()),
+                make(0.5, tip: ArrowTip()),
+                make(0.7, tip: ArrowTip()),
+                make(0.9, tip: ArrowTip()),
+                make(1, tip: ArrowTip()),
+                make(1.2, tip: ArrowTip()),
+              ]),
+              Row(children: [
+                make(0.1, tip: CircleTip()),
+                make(0.3, tip: CircleTip()),
+                make(0.5, tip: CircleTip()),
+                make(0.7, tip: CircleTip()),
+                make(0.9, tip: CircleTip()),
+                make(1, tip: CircleTip()),
+                make(1.2, tip: CircleTip()),
+              ]),
+            ],
+          ),
         ),
       ),
     );
