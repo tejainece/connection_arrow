@@ -68,24 +68,27 @@ Widget make(double bend, {TipMaker? tip}) {
       painter: ConnectionsPainter(
         connections: [
           Connection(
-              start: const Offset(0, 200), end: const Offset(200, 0), bend: bend, tip: tip),
+              start: const Offset(50, 200),
+              end: const Offset(200, 0),
+              bend: bend,
+              tip: tip),
           Connection(
-              start: const Offset(0, 200),
+              start: const Offset(50, 200),
               end: const Offset(200, 100),
               bend: bend,
               tip: tip),
           Connection(
-              start: const Offset(0, 200),
+              start: const Offset(50, 200),
               end: const Offset(200, 200),
               bend: bend,
               tip: tip),
           Connection(
-              start: const Offset(0, 200),
+              start: const Offset(50, 200),
               end: const Offset(200, 300),
               bend: bend,
               tip: tip),
           Connection(
-              start: const Offset(0, 200),
+              start: const Offset(50, 200),
               end: const Offset(200, 400),
               bend: bend,
               tip: tip),

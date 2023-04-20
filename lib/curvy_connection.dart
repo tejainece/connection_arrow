@@ -16,6 +16,13 @@ class Connection {
       this.stroke,
       this.tip});
 
+  bool isEqual(Connection other) =>
+      start == other.start &&
+      end == other.end &&
+      bend == other.bend &&
+      stroke == other.stroke &&
+      tip == other.tip;
+
   Path path() {
     final width = (end.dx - start.dx).abs();
     double endAnchorX = width * (1 - bend);
@@ -25,9 +32,9 @@ class Connection {
     return Path()
       ..moveTo(start.dx, start.dy)
       ..cubicTo(
-        width * bend,
+        start.dx + width * bend,
         start.dy,
-        endAnchorX,
+        start.dx + endAnchorX,
         end.dy,
         end.dx,
         end.dy,
@@ -60,7 +67,17 @@ class ConnectionsPainter extends CustomPainter {
     ..strokeJoin = StrokeJoin.round;
 
   @override
-  bool shouldRepaint(ConnectionsPainter oldDelegate) => true;
+  bool shouldRepaint(ConnectionsPainter oldDelegate) {
+    if (connections.length != oldDelegate.connections.length) {
+      return true;
+    }
+    for (int i = 0; i < connections.length; i++) {
+      if (connections[i] != oldDelegate.connections[i]) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 abstract class TipMaker {

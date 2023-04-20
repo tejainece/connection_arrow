@@ -2,7 +2,7 @@ name: curvy_connection
 description: Library to draw connection arrow for graphs, flow charts, mind maps, etc.
 repository: https://github.com/tejainece/connection_arrow
 
-version: 1.0.1
+version: 1.0.2
 
 environment:
   sdk: '>=2.19.0 <4.0.0'
